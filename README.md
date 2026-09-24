@@ -1,73 +1,73 @@
 # Diabetes Prediction 🩺
 
-مشروع للتنبؤ باحتمالية الإصابة بمرض السكري باستخدام تقنيات **تعلم الآلة**. يعتمد المشروع على بيانات مرضى السكري، ويستخدم نموذج **Support Vector Machine (SVM)** بعد توحيد البيانات باستخدام `StandardScaler`.
+A machine learning project for predicting the likelihood of diabetes based on patient health measurements. The project uses a diabetes dataset, standardizes the input features with `StandardScaler`, and trains a **Support Vector Machine (SVM)** classification model.
 
-يحتوي المشروع أيضًا على واجهة ويب عربية بسيطة وواجهة برمجية مبنية باستخدام **FastAPI** لإرسال بيانات المريض واستقبال نتيجة التنبؤ.
+The repository also includes a simple Arabic web interface and a **FastAPI** backend for sending patient data and receiving prediction results.
 
-> ⚠️ **تنبيه:** هذا المشروع تعليمي ولا يُعد أداة تشخيص طبية. لا تعتمد على النتيجة بدلًا من استشارة الطبيب أو إجراء الفحوصات الطبية اللازمة.
+> ⚠️ **Disclaimer:** This project is for educational purposes only and is not a medical diagnostic tool. Do not use its predictions as a substitute for professional medical advice or clinical testing.
 
-## المزايا
+## Features
 
-- تحليل بيانات مرضى السكري باستخدام Python وJupyter Notebook.
-- تدريب نموذج تصنيف باستخدام `SVC` بخوارزمية SVM.
-- توحيد الخصائص باستخدام `StandardScaler`.
-- توفير API للتنبؤ عبر المسار `/api/predict`.
-- واجهة ويب باللغة العربية لإدخال بيانات المريض وعرض النتيجة.
-- استخدام `joblib` لتحميل النموذج والـ scaler المحفوظين.
+- Exploratory data analysis using Python and Jupyter Notebook.
+- Diabetes classification using an SVM model.
+- Feature standardization with `StandardScaler`.
+- FastAPI endpoint for making predictions through `/api/predict`.
+- Simple web interface for entering patient data and displaying the result.
+- Model and scaler loading using `joblib`.
 
-## بنية المشروع
+## Project Structure
 
 ```text
 Diabetes_Prediction/
-├── Diabetes Prediction.ipynb   # تحليل البيانات وتدريب النموذج
-├── diabetes.csv                # مجموعة البيانات
-├── predictor.py                # تحميل النموذج وتنفيذ التنبؤ
-├── app.py                      # خادم FastAPI وواجهة API
-├── index.html                  # واجهة المستخدم العربية
+├── Diabetes Prediction.ipynb   # Data analysis and model training
+├── diabetes.csv                # Diabetes dataset
+├── predictor.py                # Model loading and prediction logic
+├── app.py                      # FastAPI application and API endpoint
+├── index.html                  # Web user interface
 ├── .gitignore
 └── README.md
 ```
 
-## مجموعة البيانات
+## Dataset
 
-يستخدم المشروع مجموعة بيانات **Pima Indians Diabetes Dataset**، وتحتوي على 768 سجلًا و8 خصائص إدخال بالإضافة إلى العمود الهدف `Outcome`.
+The project uses the **Pima Indians Diabetes Dataset**, which contains 768 records, 8 input features, and one target column named `Outcome`.
 
-### الخصائص المستخدمة
+### Input Features
 
-| الخاصية | الوصف |
+| Feature | Description |
 |---|---|
-| `Pregnancies` | عدد مرات الحمل |
-| `Glucose` | مستوى الجلوكوز |
-| `BloodPressure` | ضغط الدم |
-| `SkinThickness` | سمك الجلد |
-| `Insulin` | مستوى الإنسولين |
-| `BMI` | مؤشر كتلة الجسم |
-| `DiabetesPedigreeFunction` | مؤشر التاريخ الوراثي للسكري |
-| `Age` | العمر |
-| `Outcome` | النتيجة: `0` غير مصاب، `1` مصاب |
+| `Pregnancies` | Number of pregnancies |
+| `Glucose` | Plasma glucose concentration |
+| `BloodPressure` | Diastolic blood pressure |
+| `SkinThickness` | Triceps skin fold thickness |
+| `Insulin` | 2-Hour serum insulin level |
+| `BMI` | Body mass index |
+| `DiabetesPedigreeFunction` | Diabetes pedigree function |
+| `Age` | Age in years |
+| `Outcome` | Target: `0` = non-diabetic, `1` = diabetic |
 
-## المتطلبات
+## Requirements
 
-- Python 3.9 أو أحدث
+- Python 3.9 or later
 - pip
-- Jupyter Notebook (اختياري لتشغيل التحليل)
+- Jupyter Notebook (optional, for running the analysis notebook)
 
-## التثبيت
+## Installation
 
-1. استنسخ المستودع:
+1. Clone the repository:
 
 ```bash
 git clone https://github.com/Ibraheem902/Diabetes_Prediction.git
 cd Diabetes_Prediction
 ```
 
-2. أنشئ بيئة افتراضية:
+2. Create a virtual environment:
 
 ```bash
 python -m venv venv
 ```
 
-3. فعّل البيئة الافتراضية:
+3. Activate the virtual environment.
 
 ### Windows
 
@@ -81,58 +81,58 @@ venv\Scripts\activate
 source venv/bin/activate
 ```
 
-4. ثبّت المكتبات المطلوبة:
+4. Install the required dependencies:
 
 ```bash
 pip install fastapi uvicorn pandas numpy scikit-learn joblib jupyter
 ```
 
-## تشغيل النموذج والتحليل
+## Running the Notebook
 
-افتح ملف الـ Notebook:
+Open the Jupyter Notebook:
 
 ```bash
 jupyter notebook "Diabetes Prediction.ipynb"
 ```
 
-يستعرض الـ Notebook الخطوات التالية:
+The notebook covers the following steps:
 
-1. قراءة ملف `diabetes.csv`.
-2. استكشاف البيانات وتحليلها.
-3. فصل الخصائص عن النتائج.
-4. توحيد البيانات باستخدام `StandardScaler`.
-5. تقسيم البيانات إلى تدريب واختبار بنسبة 80/20.
-6. تدريب نموذج SVM باستخدام `SVC(kernel='linear')`.
-7. تقييم النموذج باستخدام `accuracy_score`.
+1. Load the `diabetes.csv` dataset.
+2. Explore and analyze the data.
+3. Separate the features from the target labels.
+4. Standardize the features using `StandardScaler`.
+5. Split the data into training and testing sets using an 80/20 ratio.
+6. Train an SVM model using `SVC(kernel="linear")`.
+7. Evaluate the model using `accuracy_score`.
 
-## تشغيل واجهة API
+## Running the API
 
-يحتاج التطبيق إلى وجود الملفين التاليين في المجلد الرئيسي:
+Before starting the API, make sure the following model files exist in the project root:
 
 ```text
 diabetes_model.pkl
 scaler.pkl
 ```
 
-يقوم `predictor.py` بتحميل هذين الملفين عند تشغيل التطبيق. بعد تجهيز ملفات النموذج، شغّل الخادم بالأمر التالي:
+The `predictor.py` file loads these files when the application starts. Run the FastAPI server with:
 
 ```bash
 uvicorn app:app --reload
 ```
 
-ستتوفر الواجهة البرمجية على:
+The API will be available at:
 
 ```text
 http://127.0.0.1:8000
 ```
 
-كما يمكنك فتح توثيق FastAPI التفاعلي على:
+Interactive API documentation is available at:
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
-## استخدام API
+## API Usage
 
 ### Endpoint
 
@@ -140,7 +140,7 @@ http://127.0.0.1:8000/docs
 POST /api/predict
 ```
 
-### مثال على الطلب
+### Example Request
 
 ```json
 {
@@ -155,7 +155,7 @@ POST /api/predict
 }
 ```
 
-### مثال على الاستجابة
+### Example Response
 
 ```json
 {
@@ -167,22 +167,22 @@ POST /api/predict
 }
 ```
 
-القيم المحتملة:
+Possible prediction values:
 
 - `prediction: 0` — Non-Diabetic
 - `prediction: 1` — Diabetic
 
-## تشغيل واجهة المستخدم
+## Running the Web Interface
 
-بعد تشغيل FastAPI، افتح ملف `index.html` في المتصفح. الواجهة ترسل البيانات إلى:
+After starting the FastAPI server, open `index.html` in your browser. The web interface sends requests to:
 
 ```text
 http://127.0.0.1:8000/api/predict
 ```
 
-إذا ظهرت رسالة تفيد بتعذر الاتصال بالخادم، تأكد من تشغيل أمر `uvicorn` أولًا.
+If you see a connection error, make sure the FastAPI server is running first.
 
-## التقنيات المستخدمة
+## Technologies Used
 
 - Python
 - Jupyter Notebook
@@ -192,27 +192,28 @@ http://127.0.0.1:8000/api/predict
 - FastAPI
 - Uvicorn
 - Joblib
-- HTML وJavaScript
+- HTML and JavaScript
 
-## حدود المشروع
+## Project Limitations
 
-- النتائج تقديرية ومبنية على بيانات تدريب محدودة.
-- وجود قيم صفرية في بعض الخصائص قد يمثل بيانات مفقودة وليس قيمة فعلية.
-- لا ينبغي استخدام النموذج لاتخاذ قرارات طبية.
-- يجب توفير ملفات النموذج المحفوظة `diabetes_model.pkl` و`scaler.pkl` قبل تشغيل API.
+- Predictions are estimates based on a limited training dataset.
+- Zero values in some medical features may represent missing values rather than actual measurements.
+- The model should not be used to make medical decisions.
+- The files `diabetes_model.pkl` and `scaler.pkl` must be available before running the API.
 
-## المساهمة
+## Contributing
 
-المساهمات مرحب بها. يمكنك:
+Contributions are welcome. To contribute:
 
-1. عمل Fork للمستودع.
-2. إنشاء فرع جديد للتعديلات.
-3. إرسال Pull Request مع شرح واضح للتغييرات.
+1. Fork the repository.
+2. Create a new branch for your changes.
+3. Commit your changes with a clear message.
+4. Open a Pull Request describing your contribution.
 
-## الترخيص
+## License
 
-لم يتم تحديد ترخيص للمشروع حتى الآن.
+No license has been specified for this project yet.
 
-## رابط المشروع
+## Repository
 
-[Diabetes Prediction على GitHub](https://github.com/Ibraheem902/Diabetes_Prediction)
+[Diabetes Prediction on GitHub](https://github.com/Ibraheem902/Diabetes_Prediction)
